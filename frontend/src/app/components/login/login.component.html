@@ -1,0 +1,75 @@
+<nav class="navbar navbar-dark bg-black navbar-expand-lg fixed-top shadow-sm">
+  <div class="container-fluid">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+      <a class="navbar-brand" href="#">ICTAK Learner Tracker</a>
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+<div class="body">
+
+
+
+
+    <div class="login text-center">
+        <main class="form-signin w-100 m-auto">
+          <div class="login-container">
+            <form #userlogin="ngForm" (ngSubmit)="userverify()">
+
+              <img class="mb-4" src="../../../assets/img/ict-ico.png" alt="" width="72" height="72">
+              <H1>Learner Tracker</H1>
+
+                <div class="col-12">
+                    <label for="yourUsername" class="form-label">Email</label>
+                    <input type="email" class="form-control" [(ngModel)]="userform.email" name="email" #email="ngModel" [class.is-invalid]="email.invalid && email.touched" id="exampleInputEmail1" aria-describedby="emailHelp" required pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+                    />
+                    <!-- <small class="text-danger" [class.d-none]="email.valid || email.touched" style="color: black; font-size: small,">
+                      Enter a valid email
+                     </small> -->
+                     
+                    
+                </div>
+                <div class="col-12">
+                    <label for="yourPassword" class="form-label">Password</label
+            >
+            <input
+              type="password"
+              class="form-control"
+              [(ngModel)]="userform.password"
+              name="password"
+              #password="ngModel"
+              [class.is-invalid]="password.invalid && password.touched"
+            
+              required
+              minlength="8"
+            />
+            <small
+              class="text-danger"
+              [class.d-none]="password.valid || password.touched"
+              style="color: black; font-size: small"
+              >Enter correct password</small
+            >
+            </div>
+            <br>
+            <div class="col-12">
+            <button class="btn btn-primary w-100" type="submit" [disabled]="userlogin.form.invalid">
+              Login
+            </button>
+            </div>
+         
+          </form>
+
+          </div>
+
+           
+        </main>
+
+    </div>
+
+</div>

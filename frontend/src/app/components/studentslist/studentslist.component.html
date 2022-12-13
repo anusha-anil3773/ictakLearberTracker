@@ -1,0 +1,90 @@
+<div class="sidebar ">
+    <a class="active" routerLink="/studentslist">Home</a>
+    <a routerLink="/user-list">Trainers/Placement Officers</a>
+</div>
+<div class="content   pt-5 pb-5">
+    <h2 class="pt-5">ICTAK Learner Tracker</h2>
+    <hr>
+    <div >
+
+
+        <div class="pt-5 pb-5 row">
+            <div class="col-sm-12">
+                <button class="btn btn-primary " routerLink="/add-students">  Students</button>
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-primary" routerLink="/csv" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    Add Student batch
+                </button>
+
+                <!-- Modal -->
+                <!-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel"> Upload CSV file</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label for="formFile" class="form-label">Default file input example</label>
+                            <input class="form-control" type="file" id="formFile" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" />
+                        </div>
+                       
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                    </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+
+        </div> -->
+        <div class="search-box pb-3">
+            <!-- <input type="text" class="form-control " placeholder="Search" name="search" [(ngModel)]="searchText"> -->
+            <input type="text" class="form-control" placeholder="Search..." [(ngModel)]="filterTerm" />
+
+        </div>
+        <table class="table table-hover ">
+            <thead>
+                <tr class="table-dark">
+                    <th scope="col">Student Name</th>
+                    <th scope="col">email id</th>
+                    <th scope="col">Phone</th>
+                    <th scope="col">Course</th>
+                    <th scope="col">Batch</th>
+                    <th scope="col">Program</th>
+                    <th scope="col">Course Status</th>
+                    <th scope="col">Placement Status</th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let student of students |paginate:
+              { itemsPerPage: tableSize,
+                 currentPage: page,
+                 totalItems: count
+               } | filter: filterTerm  ">
+                    <td>{{student.student_name}}</td>
+                    <td>{{student.contact_number}}</td>
+                    <td>{{student.phone}}</td>
+                    <td>{{student.email_id}}</td>
+                    <td>{{student.batch}}</td>
+                    <td>{{student.program}}</td>
+                    <td>{{student.course}}</td>
+                    <td>{{student.employment_status}}</td>
+                    <td><button class="btn btn-warning" type="button" (click)="updatestudent(student._id)"> <fa-icon [icon]="faEdit"></fa-icon> </button></td>
+                    <td><button class="btn btn-danger" type="button" (click)="deletestudent(student._id)"> <fa-icon [icon]="faWindowClose"></fa-icon> </button></td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+    <div class="d-flex justify-content-center">
+        <pagination-controls previousLabel="Prev" nextLabel="Next" (pageChange)="onTableDataChange($event)"></pagination-controls>
+    </div>
+
+
+</div>
